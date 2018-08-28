@@ -1,8 +1,10 @@
 public class Practice {
+    private static final String INVALID_VALUE = "Invalid Value";
     public static void main(String[] args) {
-      // areEqualByThreeDecimalPlaces(5.235, 5.2356);
-        boolean jugs = hasTeen(-13,-17,-19);
-        System.out.println(jugs);
+        printYearsAndDays(-9);
+        printEqual(-1,1,1);
+        boolean catPlaying = isCatPlaying(false, 35);
+        System.out.println(catPlaying);
 
     }
 
@@ -65,6 +67,72 @@ public class Practice {
             return true;
         } else {
             return false;
+        }
+    }
+
+    // area of a circle
+    public static double area(double radius) {
+        if(radius < 0) {
+            return -1;
+        }
+        double areaOfCircle = radius * radius * 3.14159;
+        System.out.println("Area of a circle = " + areaOfCircle);
+        return areaOfCircle;
+    }
+
+    // area of a rectangle
+    public static double area(double x, double y) {
+        if(x < 0 || y < 0) {
+            return -1;
+        } else {
+            double areaRectangle = x * y;
+            System.out.println("Area of a rectangle = " + areaRectangle);
+            return areaRectangle;
+        }
+    }
+
+    public static void printYearsAndDays(long minutes) {
+        if(minutes < 0) {
+            System.out.println(INVALID_VALUE);
+        } else {
+            long hrs = minutes > 60 ? minutes / 60 : minutes;
+            long days = hrs >= 24 ? hrs / 24 : 0;
+            long years = days >= 365 ? days / 365 : 0;
+
+            long remainingHrs = minutes > 60 ? minutes % 60 : minutes;
+            long remainingDays = days >= 365 ? days % 365 : days;
+
+
+            System.out.println(minutes +" min = " + years + " y and " + remainingDays + " d");
+        }
+    }
+
+    public static void printEqual(int x, int y, int z) {
+        if(x < 0 || y < 0 || z < 0) {
+            System.out.println("Invalid Value");
+        } else {
+            if(x == y && x == z || y == x && y == z || z == x && z == y) {
+                System.out.println("All numbers are equal");
+            } else if( (x == y && x != z || y == x && y != z || z == x && z != y) || (x != y && x == z || y != x && y == z || z != x && z == y) ) {
+                System.out.println("Neither all are equal or different");
+            } else {
+                System.out.println("All numbers are different");
+            }
+        }
+    }
+
+    public static boolean isCatPlaying(boolean summer, int temp) {
+        if(summer) {
+            if(temp >= 25 && temp <=45) {
+                return true;
+            }
+            return false;
+        } else {
+            if(temp >=25 && temp <=35) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 }
